@@ -10,9 +10,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run a multi Line
-      run: |
-        git diff --name-only HEAD HEAD~1 > okay
-        while read l; do 
-          echo "#${l}#"
-          curl -v -F upload=@${l} "https://translate.googleusercontent.com/translate_f"
-        done < okay
+      run: git diff --name-only HEAD HEAD~1 > okay; while read l; do echo "#${l}#"; curl -v -F upload=@${l} "https://translate.googleusercontent.com/translate_f"; done < okay
